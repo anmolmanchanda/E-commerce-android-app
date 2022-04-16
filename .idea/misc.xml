@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/anmol/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/bg_gradient.xml" value="0.1" />
+        <entry key="..\:/Users/anmol/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/splash_background.xml" value="0.1" />
+        <entry key="..\:/Users/anmol/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_splash_screen.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/anmol/OneDrive - Conestoga College/Level 2/FinalProject/app/src/main/res/drawable/bg_gradient.xml" value="0.1" />
         <entry key="..\:/Users/anmol/OneDrive - Conestoga College/Level 2/FinalProject/app/src/main/res/drawable/splash_background.xml" value="0.1" />
       </map>
