@@ -45,13 +45,15 @@
             android:layout_marginEnd="32dp"
             android:layout_weight="1"
             android:src="@drawable/home"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:srcCompat="@drawable/home" />
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:src="@drawable/account" />
+            android:src="@drawable/account"
+            tools:srcCompat="@drawable/account" />
 
         <ImageView
             android:layout_width="50dp"
@@ -59,7 +61,8 @@
             android:layout_marginStart="32dp"
             android:layout_weight="1"
             android:src="@drawable/cart"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:srcCompat="@drawable/cart" />
 
         <ImageView
             android:layout_width="50dp"
@@ -67,6 +70,7 @@
             android:layout_marginStart="32dp"
             android:layout_weight="1"
             android:src="@drawable/more"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:srcCompat="@drawable/more" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
