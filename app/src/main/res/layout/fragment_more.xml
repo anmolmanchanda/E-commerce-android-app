@@ -20,10 +20,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="@string/cart_fragment"
+        android:text="@string/more_fragment"
         android:theme="@style/text_views"
         app:layout_constraintTop_toBottomOf="@+id/emptyText"
-        app:layout_constraintStart_toStartOf="@id/emptyText" />
+        app:layout_constraintStart_toStartOf="@id/emptyText"/>
 
     <LinearLayout
         android:id="@+id/categories"

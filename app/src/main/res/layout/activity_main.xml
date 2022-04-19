@@ -12,12 +12,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:hint="@string/search"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:hint="@string/search"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/FrameLayout"
@@ -27,19 +26,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/emptyText"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/white"
+        android:background="@color/black"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
+            android:id="@+id/ivHome"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginEnd="32dp"
@@ -48,14 +53,26 @@
             app:layout_constraintEnd_toEndOf="parent"
             tools:srcCompat="@drawable/home" />
 
+        <TextView
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/black" />
+
         <ImageView
+            android:id="@+id/ivAccount"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:src="@drawable/account"
             tools:srcCompat="@drawable/account" />
 
+        <TextView
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/black" />
+
         <ImageView
+            android:id="@+id/ivCart"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
@@ -64,7 +81,13 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:srcCompat="@drawable/cart" />
 
+        <TextView
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/black" />
+
         <ImageView
+            android:id="@+id/ivMore"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
