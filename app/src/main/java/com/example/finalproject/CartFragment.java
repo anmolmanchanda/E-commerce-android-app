@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -17,13 +18,10 @@ import java.util.List;
 
 public class CartFragment extends Fragment {
     DataBaseHelper db;
-    RecyclerView R1;
+    RecyclerView R2;
+    TextView priceCart;
     private List<Cart> cartList=new ArrayList<>();
     public CartProductAdapter NewAdapter;
-    public CartFragment() {
-        // Required empty public constructor
-    }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,9 +44,10 @@ public class CartFragment extends Fragment {
         int id1,quantity;
         float price;
         String productName,productDescription;
-
-        R1=getView().findViewById(R.id.cartRecyclerView);
+        priceCart=(TextView) getView().findViewById(R.id.priceCartTextView);
+        R2=(RecyclerView) getView().findViewById(R.id.cartRecyclerView);
         db=new DataBaseHelper(getActivity());
+        priceCart.setText("Inside fn");
         Cursor cursor=db.viewCart();
         if(cursor==null){
             Toast.makeText(getContext(), "Empty Table", Toast.LENGTH_SHORT).show();
@@ -78,9 +77,9 @@ public class CartFragment extends Fragment {
     public void bindAdapter()
     {
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getContext());
-        R1.setLayoutManager(layoutManager);
+        R2.setLayoutManager(layoutManager);
         NewAdapter=new CartProductAdapter(cartList,getContext());
-        R1.setAdapter(NewAdapter);
+        R2.setAdapter(NewAdapter);
         NewAdapter.notifyDataSetChanged();
     }
 

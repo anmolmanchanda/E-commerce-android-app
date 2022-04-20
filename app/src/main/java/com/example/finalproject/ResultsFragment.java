@@ -25,6 +25,7 @@ import java.util.List;
  */
 public class ResultsFragment extends Fragment {
     RecyclerView recyclerView;
+    public String type;
     private List<Product> list = new ArrayList<>();
     private ListAdapter listAdapter;
     Cursor cursor;
@@ -42,7 +43,12 @@ public class ResultsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ResultsFragment() {
+    public ResultsFragment( ) {
+
+        // Required empty public constructor
+    }
+    public ResultsFragment( String Type) {
+        this.type=Type;
         // Required empty public constructor
     }
 
@@ -80,7 +86,7 @@ public class ResultsFragment extends Fragment {
 
         DataBaseHelper databaseHelper = new DataBaseHelper(getContext());
         //Created a cursor object to get all the records saved in SQL DB
-        cursor = databaseHelper.viewProduct();
+        cursor = databaseHelper.viewProduct(this.type);
 
         //checking if the cursor is at first position
         if (cursor.moveToFirst()) {

@@ -22,31 +22,6 @@ public class CartProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     }
 
-    @NonNull
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cartproductlayout, parent, false);
-        ViewHolder viewHolder = new ViewHolder(v);
-        return viewHolder;
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
-
-        Cart cartAdapter = cartList.get(position);
-        //setting the viewholder
-        ((ViewHolder) holder).PName.setText(cartAdapter.getProduct_name());
-        ((ViewHolder) holder).PPrice.setText((int) cartAdapter.getPrice());
-        ((ViewHolder) holder).PQuantity.setText(cartAdapter.getQuantity());
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return 0;
-    }
-
     class ViewHolder extends RecyclerView.ViewHolder {
         //creating recycle view elements
         public ImageButton deleteBtn;
@@ -65,4 +40,31 @@ public class CartProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             PQuantity = (TextView) itemView.findViewById(R.id.CartProductQuantityTextView);
         }
     }
+
+    @NonNull
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cartproductlayout, parent, false);
+        ViewHolder viewHolder = new ViewHolder(v);
+        return viewHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+
+
+        Cart cartAdapter = cartList.get(position);
+        //setting the viewholder
+        ((ViewHolder) viewHolder).PName.setText(cartAdapter.getProduct_name());
+        ((ViewHolder) viewHolder).PPrice.setText(Integer.toString((int) cartAdapter.getPrice()));
+        ((ViewHolder) viewHolder).PQuantity.setText(Integer.toString(cartAdapter.getQuantity()));
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return cartList.size();
+    }
+
+
 }

@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     ImageView ivHome;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+primer();
 
         switchFragment(new HomeFragment());
         ivHome = (ImageView) findViewById(R.id.ivHome);
@@ -80,5 +83,24 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.FrameLayout, fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+    //Insert initial data
+    public void primer()
+    {
+        Product P1=new Product(3,"TV","Electronics",1200);
+        DataBaseHelper db=new DataBaseHelper(MainActivity.this);
+        boolean a=db.InsertIntoProduct(P1);
+
+        if(a)
+        {
+            Toast.makeText(this, "Inserted into database product", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(this, "product fail", Toast.LENGTH_SHORT).show();
+        }
+
+
+
     }
 }
