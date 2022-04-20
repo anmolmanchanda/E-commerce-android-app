@@ -126,7 +126,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public Cursor viewProduct(){
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor cursor;
-//executing query to select all rows and setting the cursor to  the returned rows
+        //executing query to select all rows and setting the cursor to  the returned rows
         cursor=db.rawQuery("SELECT * FROM "+PRODUCT_TABLE_NAME,null);
         if(cursor!=null){
             cursor.moveToFirst();//setting the cursor to the first row
