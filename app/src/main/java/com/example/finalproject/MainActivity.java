@@ -87,7 +87,7 @@ primer();
     //Insert initial data
     public void primer()
     {
-        Product P1=new Product(3,"TV","Electronics",1200);
+        Product P1=new Product("3","TV","Electronics","1200");
         DataBaseHelper db=new DataBaseHelper(MainActivity.this);
         boolean a=db.InsertIntoProduct(P1);
 

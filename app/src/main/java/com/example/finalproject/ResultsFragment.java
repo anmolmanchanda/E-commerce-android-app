@@ -29,10 +29,10 @@ public class ResultsFragment extends Fragment {
     private List<Product> list = new ArrayList<>();
     private ListAdapter listAdapter;
     Cursor cursor;
-    int productID;
-    String productName;
-    String productDescription;
-    float productPrice;
+    StringBuffer sbProductID;
+    StringBuffer sbProductName;
+    StringBuffer sbProductDescription;
+    StringBuffer sbProductPrice;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -87,18 +87,32 @@ public class ResultsFragment extends Fragment {
         DataBaseHelper databaseHelper = new DataBaseHelper(getContext());
         //Created a cursor object to get all the records saved in SQL DB
         cursor = databaseHelper.viewProduct(this.type);
+        sbProductID = new StringBuffer();
+        sbProductName = new StringBuffer();
+        sbProductDescription = new StringBuffer();
+        sbProductPrice = new StringBuffer();
+
 
         //checking if the cursor is at first position
         if (cursor.moveToFirst()) {
             do {
                 //getting the string stored in the cursor at the column index which has the respective string
-                productID = Integer.parseInt(cursor.getString(cursor.getColumnIndex("id")));
-                productName = "Product Name: " + cursor.getString(cursor.getColumnIndex("Pname"));
-                productDescription = "Description: " + cursor.getString(cursor.getColumnIndex("Description"));
-                productPrice = Float.parseFloat(cursor.getString(cursor.getColumnIndex("Price")));
+                Product product = new Product();
+                sbProductID.append(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
+                sbProductID.append(" " + "\n");
+                sbProductName.append(cursor.getString(cursor.getColumnIndex("Pname")));
+                sbProductName.append(" " + "\n");
+                sbProductDescription.append(cursor.getString(cursor.getColumnIndex("Description")));
+                sbProductDescription.append(" " + "\n");
+                sbProductPrice.append(Float.parseFloat(cursor.getString(cursor.getColumnIndex("Price"))));
+                sbProductPrice.append(" " + "\n");
                 //as long as there's a next record to move to
             } while (cursor.moveToNext());
         }
+        Log.i("cursor", "" + cursor.getCount());
+        Log.i("cursor", "" + cursor);
+        Log.i("cursor", "" + cursor.toString());
+        //Log.i("cursor", "" + cursor.getString(1));
 
         recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
         AddListItems();
@@ -107,15 +121,23 @@ public class ResultsFragment extends Fragment {
 
     private void AddListItems(){
         Product product = new Product();
-        product.setProductID(productID);
-        product.setProduct_name(productName);
-        product.setDescription(productDescription);
-        product.setPrice(productPrice);
-        Log.i("productID", ""+String.valueOf(productID));
-        Log.i("productName",""+productName);
-        Log.i("productDescription",""+productDescription);
-        Log.i("productPrice",""+String.valueOf(productPrice));
+        product.setProductID(sbProductID.toString());
+        product.setProduct_name(sbProductName.toString());
+        product.setDescription(sbProductDescription.toString());
+        product.setPrice(sbProductPrice.toString());
+        Log.i("productID", "" + String.valueOf(sbProductID));
+        Log.i("productName", "" + sbProductName);
+        Log.i("productDescription", "" + sbProductDescription);
+        Log.i("productPrice", "" + String.valueOf(sbProductPrice));
+        Log.i("product", "" + product);
         list.add(product);
+        Log.i("list", "" + list);
+//        product = new Product();
+//        product.setProductID(productID);
+//        product.setProduct_name(productName);
+//        product.setDescription(productDescription);
+//        product.setPrice(productPrice);
+//        list.add(product);
     }
 
     private void BindAdapter()
@@ -123,6 +145,7 @@ public class ResultsFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         listAdapter = new ListAdapter(list, getContext());
+        Log.i("listAdapter", "" + listAdapter);
         recyclerView.setAdapter(listAdapter);
         listAdapter.notifyDataSetChanged();
     }

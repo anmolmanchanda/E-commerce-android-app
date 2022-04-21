@@ -115,6 +115,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         contentvalues.put(P_COL4,C1.getPrice());
         //inserting into database
         long result=db.insert(PRODUCT_TABLE_NAME,null,contentvalues);
+        db.close();
+
         if(result==-1){
             return false;
         }
@@ -122,12 +124,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         {
             return true;
         }
+
     }
     public Cursor viewProduct( String type){
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor cursor;
         //executing query to select all rows and setting the cursor to  the returned rows
-        cursor=db.rawQuery("SELECT * FROM "+PRODUCT_TABLE_NAME+" WHERE "+P_COL3+"= ?",new String[]{type});
+        cursor=db.rawQuery("SELECT * FROM "+PRODUCT_TABLE_NAME,null);
+                //"WHERE "+P_COL3+"= ?",new String[]{type});
         if(cursor!=null){
             cursor.moveToFirst();//setting the cursor to the first row
         }

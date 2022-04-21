@@ -20,11 +20,17 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView mTextView;
+        public TextView tvProductID;
+        public TextView tvProductName;
+        public TextView tvProductDescription;
+        public TextView tvProductPrice;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mTextView = (TextView) itemView.findViewById(R.id.recyclerTV);
+            tvProductID = (TextView) itemView.findViewById(R.id.tvProductID);
+            tvProductName = (TextView) itemView.findViewById(R.id.tvProductName);
+            tvProductDescription = (TextView) itemView.findViewById(R.id.tvProductDescription);
+            tvProductPrice = (TextView) itemView.findViewById(R.id.tvProductPrice);
         }
     }
 
@@ -42,7 +48,10 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Product itemAdapter = mList.get(position);
-        ((ViewHolder) holder).mTextView.setText(itemAdapter.getProduct_name());
+        ((ViewHolder) holder).tvProductID.setText(itemAdapter.getProductID()+"");
+        ((ViewHolder) holder).tvProductName.setText(itemAdapter.getProduct_name());
+        ((ViewHolder) holder).tvProductDescription.setText(itemAdapter.getDescription());
+        ((ViewHolder) holder).tvProductPrice.setText((itemAdapter.getPrice()+""));
     }
 
     @Override
