@@ -32,7 +32,8 @@
             android:id="@+id/cartRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="10pt"
-            android:layout_marginTop="10pt" />
+            android:layout_marginStart="1pt"
+            android:layout_marginTop="1pt"
+            android:background="#DEFFB8" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

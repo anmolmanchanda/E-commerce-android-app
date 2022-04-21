@@ -43,11 +43,14 @@ public class CartFragment extends Fragment {
 
         int id1,quantity;
         float price;
-        String productName,productDescription;
-        priceCart=(TextView) getView().findViewById(R.id.priceCartTextView);
-        R2=(RecyclerView) getView().findViewById(R.id.cartRecyclerView);
         db=new DataBaseHelper(getActivity());
-        priceCart.setText("Inside fn");
+        String productName,productDescription,url;
+        priceCart=(TextView) getView().findViewById(R.id.priceCartTextView);
+        String toPrint;
+        toPrint="SUB-TOTAL :"+db.sumCart();
+        priceCart.setText(toPrint);
+        R2=(RecyclerView) getView().findViewById(R.id.cartRecyclerView);
+
         Cursor cursor=db.viewCart();
         if(cursor==null){
             Toast.makeText(getContext(), "Empty Table", Toast.LENGTH_SHORT).show();
@@ -62,7 +65,8 @@ public class CartFragment extends Fragment {
                     productDescription=cursor.getString(cursor.getColumnIndexOrThrow("Description"));
                     price=cursor.getFloat(cursor.getColumnIndexOrThrow("Price"));
                     quantity=cursor.getInt(cursor.getColumnIndexOrThrow("Quantity"));
-                    Cart C=new Cart(id1,productName,productDescription,price,quantity);//setting object with values retrived from table
+                    url=cursor.getString(cursor.getColumnIndexOrThrow("url"));
+                    Cart C=new Cart(id1,productName,productDescription,price,quantity,url);//setting object with values retrived from table
                     //adding object to object list
                     cartList.add(C);
                 }while(cursor.moveToNext());

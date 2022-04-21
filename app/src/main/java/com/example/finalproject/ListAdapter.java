@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,13 +25,16 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         public TextView tvProductName;
         public TextView tvProductDescription;
         public TextView tvProductPrice;
+        public ImageView imProductImage;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder( View itemView) {
             super(itemView);
             tvProductID = (TextView) itemView.findViewById(R.id.tvProductID);
             tvProductName = (TextView) itemView.findViewById(R.id.tvProductName);
             tvProductDescription = (TextView) itemView.findViewById(R.id.tvProductDescription);
             tvProductPrice = (TextView) itemView.findViewById(R.id.tvProductPrice);
+            imProductImage=(ImageView) itemView.findViewById(R.id.productImageRecordLayout);
+            imProductImage.setImageResource(R.drawable.harrypotter);
         }
     }
 
@@ -48,10 +52,10 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Product itemAdapter = mList.get(position);
-        ((ViewHolder) holder).tvProductID.setText(itemAdapter.getProductID()+"");
+        ((ViewHolder) holder).tvProductID.setText(String.valueOf(itemAdapter.getProductID()));
         ((ViewHolder) holder).tvProductName.setText(itemAdapter.getProduct_name());
         ((ViewHolder) holder).tvProductDescription.setText(itemAdapter.getDescription());
-        ((ViewHolder) holder).tvProductPrice.setText((itemAdapter.getPrice()+""));
+        ((ViewHolder) holder).tvProductPrice.setText(String.valueOf(itemAdapter.getPrice()));
     }
 
     @Override

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,7 +30,7 @@ public class CartProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         public TextView PName;
         public TextView PPrice;
         public TextView PQuantity;
-
+        public ImageView cartImage;
         public ViewHolder(View itemView) {
             super(itemView);
             //binding elements
@@ -38,6 +39,9 @@ public class CartProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             PName = (TextView) itemView.findViewById(R.id.CartProductNameTextView);
             PPrice = (TextView) itemView.findViewById(R.id.cartProductPriceTextView);
             PQuantity = (TextView) itemView.findViewById(R.id.CartProductQuantityTextView);
+            cartImage=(ImageView) itemView.findViewById(R.id.cartProductImage);
+
+            cartImage.setImageResource(R.drawable.harrypotter);
         }
     }
 
@@ -54,6 +58,7 @@ public class CartProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
 
         Cart cartAdapter = cartList.get(position);
+        String temp=cartAdapter.getUrl();
         //setting the viewholder
         ((ViewHolder) viewHolder).PName.setText(cartAdapter.getProduct_name());
         ((ViewHolder) viewHolder).PPrice.setText(Integer.toString((int) cartAdapter.getPrice()));

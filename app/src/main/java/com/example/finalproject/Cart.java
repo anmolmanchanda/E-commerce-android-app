@@ -7,17 +7,18 @@ public class Cart {
     private String description;
     private float price;
     private int quantity;
-
+    private String url;
     public Cart() {
 
     }
 
-    public Cart(int ProductID, String PName, String PDescription, float PPrice, int Quantity) {//cart class constructor to set values
+    public Cart(int ProductID, String PName, String PDescription, float PPrice, int Quantity,String url) {//cart class constructor to set values
         this.productID = ProductID;
         this.product_name = PName;
         this.description = PDescription;
         this.price = PPrice;
         this.quantity = Quantity;
+        this.url=url;
     }
 
     //functions to get data objects of class
@@ -39,6 +40,10 @@ public class Cart {
 
     public int getQuantity() {
         return this.quantity;
+    }
+
+    public String getUrl() {
+        return this.url;
     }
 
 

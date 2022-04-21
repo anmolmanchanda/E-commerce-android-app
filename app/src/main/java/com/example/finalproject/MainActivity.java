@@ -21,8 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-primer();
+        primer();
 
         switchFragment(new HomeFragment());
         ivHome = (ImageView) findViewById(R.id.ivHome);
@@ -87,20 +86,24 @@ primer();
     //Insert initial data
     public void primer()
     {
-        Product P1=new Product("3","TV","Electronics","1200");
+        Product P1=new Product(3,"TV","Electronics",1200,"harrypotter.jpg");
+        Cart C1=new Cart(3,"TV","Electronics",1200,3,"harrypotter.jpg");
         DataBaseHelper db=new DataBaseHelper(MainActivity.this);
-        boolean a=db.InsertIntoProduct(P1);
+        if(db.viewProduct().getCount()==0) {
+            boolean a = db.InsertIntoProduct(P1);
+            boolean b = db.InsertIntoCart(C1);
+            if (a) {
+                Toast.makeText(this, "Inserted into database product", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "product fail", Toast.LENGTH_SHORT).show();
+            }
+            if (b) {
+                Toast.makeText(this, "Inserted into database C", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "C fail", Toast.LENGTH_SHORT).show();
+            }
 
-        if(a)
-        {
-            Toast.makeText(this, "Inserted into database product", Toast.LENGTH_SHORT).show();
         }
-        else
-        {
-            Toast.makeText(this, "product fail", Toast.LENGTH_SHORT).show();
-        }
-
-
 
     }
 }
