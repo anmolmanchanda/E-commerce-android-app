@@ -8,25 +8,38 @@
     <TextView
         android:id="@+id/emptyText"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="10dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <LinearLayout
+        android:id="@+id/topShelf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/emptyText"
+        app:layout_constraintStart_toStartOf="@id/emptyText">
+
     <TextView
-        android:id="@+id/TVcategories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="@string/account_fragment"
-        android:theme="@style/text_views"
-        app:layout_constraintTop_toBottomOf="@+id/emptyText"
-        app:layout_constraintStart_toStartOf="@id/emptyText" />
+        android:text="@string/hello_user"
+        android:theme="@style/text_views" />
+
+        <ImageView
+            android:layout_marginStart="225dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/account"
+            tools:srcCompat="@drawable/account" />
+    </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/categories"
+        android:id="@+id/button_row_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -34,29 +47,152 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVcategories">
+        app:layout_constraintTop_toBottomOf="@+id/topShelf">
 
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="150dp"
+        <Button android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:text="@string/your_orders"
             android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <Button
-            android:id="@+id/button"
-            android:layout_width="100dp"
-            android:layout_height="150dp"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            tools:layout_editor_absoluteX="153dp" />
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="150dp"
+            android:text="@string/buy_again"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
             android:layout_marginStart="32dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/button_row_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_row_one">
 
+        <Button android:layout_width="150dp"
+            android:text="@string/your_account"
+            android:layout_height="75dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <Button
+            android:text="@string/your_wishlist"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/secondShelf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/button_row_two"
+        app:layout_constraintStart_toStartOf="@id/emptyText">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/your_orders"
+            android:theme="@style/text_views" />
+
+        <Button
+            android:layout_marginStart="170dp"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="@string/see_all"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/image_row_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/secondShelf"
+        app:layout_constraintStart_toStartOf="@id/secondShelf">
+
+        <ImageView
+            android:layout_marginStart="5dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/books"
+            tools:srcCompat="@drawable/books" />
+
+        <ImageView
+            android:layout_marginStart="5dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/clothing"
+            tools:srcCompat="@drawable/clothing" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/image_row_one"
+        app:layout_constraintStart_toStartOf="@id/image_row_one"/>
+
+    <LinearLayout
+        android:id="@+id/thirdShelf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/line1"
+        app:layout_constraintStart_toStartOf="@id/line1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/keep_shopping_for"
+            android:theme="@style/text_views" />
+
+        <Button
+            android:layout_marginStart="50dp"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="@string/browsing_history"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/image_row_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/thirdShelf"
+        app:layout_constraintStart_toStartOf="@id/thirdShelf">
+
+        <ImageView
+            android:layout_marginStart="5dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/electronics"
+            tools:srcCompat="@drawable/electronics" />
+
+        <ImageView
+            android:layout_marginStart="5dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/clothing1"
+            tools:srcCompat="@drawable/clothing1" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

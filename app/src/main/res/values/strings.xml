@@ -2,7 +2,7 @@
     <string name="app_name">Final Project</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="cart_fragment">Cart fragment</string>
-    <string name="account_fragment">account fragment</string>
+    <string name="hello_user">Hello, User</string>
     <string name="more_fragment">more fragment</string>
 
     <string name="search">Search</string>
@@ -13,6 +13,28 @@
     <string name="electronics">Electronics</string>
     <string name="clothing">Clothing</string>
     <string name="books">Books</string>
+    <string name="addToCart">Add cart</string>
+    <string name="removeFromCart">Remove cart</string>
+    <string name="checkout">Checkout</string>
+    <string name="your_orders">Your Orders</string>
+    <string name="orders">Orders</string>
+    <string name="your_account">Your Account</string>
+    <string name="account">Account</string>
+    <string name="your_wishlist">Your Wishlist</string>
+    <string name="see_all">See All</string>
+    <string name="buy_again">Buy</string>
+    <string name="keep_shopping_for">Keep Shopping For</string>
+    <string name="browsing_history">Browsing History</string>
+    <string name="lists">Lists</string>
+    <string name="prime">Prime</string>
+    <string name="gifting">Gifting</string>
+    <string name="deals">Deals</string>
+    <string name="groceries">Groceries</string>
+    <string name="drugstore">Drugstore</string>
+    <string name="pets">Pets</string>
+    <string name="fashion">Fashion</string>
+    <string name="home">Home</string>
+    <string name="devices">Devices</string>
 
 
 </resources>

@@ -171,7 +171,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
 
     }
-    public Cursor viewProduct( String type){
+    public Cursor viewProduct(String type){
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor cursor;
         //executing query to select all rows and setting the cursor to  the returned rows

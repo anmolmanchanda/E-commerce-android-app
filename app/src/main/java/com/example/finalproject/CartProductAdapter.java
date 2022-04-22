@@ -1,6 +1,8 @@
 package com.example.finalproject;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -16,11 +19,13 @@ import java.util.List;
 public class CartProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Cart> cartList;
+    private Context context;
 
-    public CartProductAdapter(List<Cart> list, Context context) {
+    //in the Constructor, pass the context in the parameters
+     public CartProductAdapter(List<Cart> list, Context context) {
         super();
         cartList = list;
-
+        this.context = context;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -31,6 +36,7 @@ public class CartProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         public TextView PPrice;
         public TextView PQuantity;
         public ImageView cartImage;
+
         public ViewHolder(View itemView) {
             super(itemView);
             //binding elements
@@ -41,7 +47,13 @@ public class CartProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             PQuantity = (TextView) itemView.findViewById(R.id.CartProductQuantityTextView);
             cartImage=(ImageView) itemView.findViewById(R.id.cartProductImage);
 
-            cartImage.setImageResource(R.drawable.harrypotter);
+            DataBaseHelper dataBaseHelper = new DataBaseHelper(context.getApplicationContext());
+            Cursor cursor = dataBaseHelper.viewProduct();
+            @SuppressLint("Range") String url = (cursor.getString(cursor.getColumnIndex("url")));
+            //cartImage.setImageResource(R.drawable.harrypotter);
+            //cartImage.setImageResource(getResources().getIdentifier("books1","drawable", getPackageName()));
+            cartImage.setImageResource(context.getResources().getIdentifier(
+                    "com.example.finalproject:drawable/"+url,null,null));
         }
     }
 

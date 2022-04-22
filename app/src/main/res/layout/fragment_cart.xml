@@ -21,12 +21,12 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/cartButton"
+            android:id="@+id/btnCheckout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10pt"
             android:layout_marginEnd="10pt"
-            android:text="Button" />
+            android:text="@string/checkout" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cartRecyclerView"

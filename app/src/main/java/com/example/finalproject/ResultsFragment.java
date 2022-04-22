@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,7 @@ public class ResultsFragment extends Fragment {
 
         // Required empty public constructor
     }
-    public ResultsFragment( String Type) {
+    public ResultsFragment(String Type) {
         this.type=Type;
         // Required empty public constructor
     }
@@ -45,37 +46,37 @@ public class ResultsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         DataBaseHelper databaseHelper = new DataBaseHelper(getContext());
         //Created a cursor object to get all the records saved in SQL DB
         cursor = databaseHelper.viewProduct(this.type);
+        if(cursor!=null && cursor.getCount() > 0) {
+            int id;
+            String name;
+            String desc, url;
+            float price;
+            //checking if the cursor is at first position
+            if (cursor.moveToFirst()) {
+                do {
+                    //getting the string stored in the cursor at the column index which has the respective string
+                    Product product = new Product();
+                    id = (Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
+                    //sbProductID.append(" " + "\n");
+                    name = (cursor.getString(cursor.getColumnIndex("Pname")));
+                    //sbProductName.append(" " + "\n");
+                    desc = (cursor.getString(cursor.getColumnIndex("Description")));
+                    //sbProductDescription.append(" " + "\n");
+                    price = (Float.parseFloat(cursor.getString(cursor.getColumnIndex("Price"))));
+                    //sbProductPrice.append(" " + "\n");
+                    //as long as there's a next record to move to
+                    url = (cursor.getString(cursor.getColumnIndex("url")));
+                    Log.i("URL","IN RF URL: "+url);
 
-        int id;
-        String name;
-        String desc,url;
-        float price;
-        //checking if the cursor is at first position
-        if (cursor.moveToFirst()) {
-            do {
-                //getting the string stored in the cursor at the column index which has the respective string
-                Product product = new Product();
-                id=(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
-                //sbProductID.append(" " + "\n");
-                name=(cursor.getString(cursor.getColumnIndex("Pname")));
-                //sbProductName.append(" " + "\n");
-                desc=(cursor.getString(cursor.getColumnIndex("Description")));
-                //sbProductDescription.append(" " + "\n");
-                price=(Float.parseFloat(cursor.getString(cursor.getColumnIndex("Price"))));
-                //sbProductPrice.append(" " + "\n");
-                //as long as there's a next record to move to
-                url=(cursor.getString(cursor.getColumnIndex("url")));
-                Product p=new Product(id,name,desc,price,url);
-                list.add(p);
-            } while (cursor.moveToNext());
+                    Product p = new Product(id, name, desc, price, url);
+                    list.add(p);
+                } while (cursor.moveToNext());
+            }
         }
-
-        //Log.i("cursor", "" + cursor.getString(1));
-
+        Log.i("cursor count", "" + cursor.getCount());
         recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
         //AddListItems();
         BindAdapter();
@@ -101,6 +102,8 @@ public class ResultsFragment extends Fragment {
 //        product.setPrice(productPrice);
 //        list.add(product);
     }*/
+
+
 
     private void BindAdapter()
     {

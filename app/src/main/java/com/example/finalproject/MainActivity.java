@@ -86,13 +86,22 @@ public class MainActivity extends AppCompatActivity {
     //Insert initial data
     public void primer()
     {
-        Product P1=new Product(3,"TV","Electronics",1200,"harrypotter.jpg");
-        Cart C1=new Cart(3,"TV","Electronics",1200,3,"harrypotter.jpg");
+        Product Electronics1 = new Product(1,"TV11","Electronics",1201,"electronics1");
+        Product Electronics2 = new Product(2,"TV22","Electronics",1202,"electronics1");
+        Product Electronics3 = new Product(3,"TV33","Electronics",1203,"electronics1");
+        Product Books1 = new Product(4,"Novel1","Books1",1201,"books1");
+        Product Clothing1 = new Product(5,"Shirt1","Clothing1",1201,"clothing1");
+        Cart C1=new Cart(6,"TV","Electronics",1200,3,"books1");
         DataBaseHelper db=new DataBaseHelper(MainActivity.this);
         if(db.viewProduct().getCount()==0) {
-            boolean a = db.InsertIntoProduct(P1);
+            boolean boolElectronics1 = db.InsertIntoProduct(Electronics1);
+            boolean boolElectronics2 = db.InsertIntoProduct(Electronics2);
+            boolean boolElectronics3 = db.InsertIntoProduct(Electronics3);
+            boolean boolBooks1 = db.InsertIntoProduct(Books1);
+            boolean boolClothing1 = db.InsertIntoProduct(Clothing1);
+
             boolean b = db.InsertIntoCart(C1);
-            if (a) {
+            if (boolElectronics1) {
                 Toast.makeText(this, "Inserted into database product", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "product fail", Toast.LENGTH_SHORT).show();
