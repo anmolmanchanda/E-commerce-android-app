@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         primer();
-
+//linking UI
         switchFragment(new HomeFragment());
         ivHome = (ImageView) findViewById(R.id.ivHome);
         ivAccount = (ImageView) findViewById(R.id.ivAccount);
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         ivHome.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {//Functions for switching fragments
                 switchFragment(new HomeFragment());
                 ivHome.setImageResource(R.drawable.home_active);
                 ivAccount.setImageResource(R.drawable.account);
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         });
         ivAccount.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {//Functions for switching fragments
                 switchFragment(new AccountFragment());
                 ivHome.setImageResource(R.drawable.home);
                 ivAccount.setImageResource(R.drawable.account_active);
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         });
         ivCart.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {//Functions for switching fragments
                 switchFragment(new CartFragment());
                 ivHome.setImageResource(R.drawable.home);
                 ivAccount.setImageResource(R.drawable.account);
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         });
         ivMore.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {//Functions for switching fragments
                 switchFragment(new MoreFragment());
                 ivHome.setImageResource(R.drawable.home);
                 ivAccount.setImageResource(R.drawable.account);
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void switchFragment(Fragment fragment){
+    public  void switchFragment(Fragment fragment){//Functions for switching fragments
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction
                 .replace(R.id.FrameLayout, fragment)
@@ -85,31 +85,36 @@ public class MainActivity extends AppCompatActivity {
     }
     //Insert initial data
     public void primer()
-    {
-        Product Electronics1 = new Product(1,"TV11","Electronics",1201,"electronics1");
-        Product Electronics2 = new Product(2,"TV22","Electronics",1202,"electronics1");
-        Product Electronics3 = new Product(3,"TV33","Electronics",1203,"electronics1");
-        Product Books1 = new Product(4,"Novel1","Books1",1201,"books1");
-        Product Clothing1 = new Product(5,"Shirt1","Clothing1",1201,"clothing1");
-        Cart C1=new Cart(6,"TV","Electronics",1200,3,"books1");
+    {//intialisation of db with values
+        Product P1=new Product(1,"The Burger Book","Books",120,R.drawable.theburgerbookimage);
+        Product P2=new Product(2,"The Cat In The Hat","Books",10,R.drawable.thecatinthehatbookimage);
+        Product P3=new Product(3,"The Last Book On The Left","Books",200,R.drawable.thelastbookontheleftbookimage);
+
+        Product P4=new Product(4,"FitBit Smart Watch","Electronics",400,R.drawable.fitbitsmartwatchelectronicsimage);
+        Product P5=new Product(5,"Samsung S22","Electronics",1700,R.drawable.samsungs22electronicsimage);
+        Product P6=new Product(6,"Sony Headphone","Electronics",200,R.drawable.sonyheadphoneelectronicsimage);
+
+        Product P7=new Product(7,"Cap","Clothing",20,R.drawable.capclothingimage);
+        Product P8=new Product(8,"Jacket","Clothing",200,R.drawable.jacketclothingimage);
+        Product P9=new Product(9,"Shirt","Clothing",120,R.drawable.shirtclothingimage);
+
         DataBaseHelper db=new DataBaseHelper(MainActivity.this);
         if(db.viewProduct().getCount()==0) {
-            boolean boolElectronics1 = db.InsertIntoProduct(Electronics1);
-            boolean boolElectronics2 = db.InsertIntoProduct(Electronics2);
-            boolean boolElectronics3 = db.InsertIntoProduct(Electronics3);
-            boolean boolBooks1 = db.InsertIntoProduct(Books1);
-            boolean boolClothing1 = db.InsertIntoProduct(Clothing1);
+            boolean a = db.InsertIntoProduct(P1);
+             a = db.InsertIntoProduct(P1);
+             a = db.InsertIntoProduct(P2);
+             a = db.InsertIntoProduct(P3);
+             a = db.InsertIntoProduct(P4);
+             a = db.InsertIntoProduct(P5);
+            a = db.InsertIntoProduct(P6);
+            a = db.InsertIntoProduct(P7);
+            a = db.InsertIntoProduct(P8);
+            a = db.InsertIntoProduct(P9);
 
-            boolean b = db.InsertIntoCart(C1);
-            if (boolElectronics1) {
+            if (a) {
                 Toast.makeText(this, "Inserted into database product", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "product fail", Toast.LENGTH_SHORT).show();
-            }
-            if (b) {
-                Toast.makeText(this, "Inserted into database C", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "C fail", Toast.LENGTH_SHORT).show();
             }
 
         }

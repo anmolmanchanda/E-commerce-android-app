@@ -44,15 +44,15 @@ public class ResultsFragment extends Fragment {
 
     @SuppressLint("Range")
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {//for showing the product based on category
         super.onViewCreated(view, savedInstanceState);
         DataBaseHelper databaseHelper = new DataBaseHelper(getContext());
         //Created a cursor object to get all the records saved in SQL DB
         cursor = databaseHelper.viewProduct(this.type);
         if(cursor!=null && cursor.getCount() > 0) {
-            int id;
+            int id, url;
             String name;
-            String desc, url;
+            String desc;
             float price;
             //checking if the cursor is at first position
             if (cursor.moveToFirst()) {
@@ -60,16 +60,16 @@ public class ResultsFragment extends Fragment {
                     //getting the string stored in the cursor at the column index which has the respective string
                     Product product = new Product();
                     id = (Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
-                    //sbProductID.append(" " + "\n");
+
                     name = (cursor.getString(cursor.getColumnIndex("Pname")));
-                    //sbProductName.append(" " + "\n");
+
                     desc = (cursor.getString(cursor.getColumnIndex("Description")));
-                    //sbProductDescription.append(" " + "\n");
+
                     price = (Float.parseFloat(cursor.getString(cursor.getColumnIndex("Price"))));
-                    //sbProductPrice.append(" " + "\n");
+
                     //as long as there's a next record to move to
-                    url = (cursor.getString(cursor.getColumnIndex("url")));
-                    Log.i("URL","IN RF URL: "+url);
+                    url = cursor.getInt(cursor.getColumnIndexOrThrow("url"));
+
 
                     Product p = new Product(id, name, desc, price, url);
                     list.add(p);
@@ -82,30 +82,11 @@ public class ResultsFragment extends Fragment {
         BindAdapter();
     }
 
-    /*private void AddListItems(){
-        Product product = new Product();
-        product.setProductID(sbProductID.toString());
-        product.setProduct_name(sbProductName.toString());
-        product.setDescription(sbProductDescription.toString());
-        product.setPrice(sbProductPrice.toString());
-        Log.i("productID", "" + String.valueOf(sbProductID));
-        Log.i("productName", "" + sbProductName);
-        Log.i("productDescription", "" + sbProductDescription);
-        Log.i("productPrice", "" + String.valueOf(sbProductPrice));
-        Log.i("product", "" + product);
-        list.add(product);
-        Log.i("list", "" + list);
-//        product = new Product();
-//        product.setProductID(productID);
-//        product.setProduct_name(productName);
-//        product.setDescription(productDescription);
-//        product.setPrice(productPrice);
-//        list.add(product);
-    }*/
 
 
 
-    private void BindAdapter()
+
+    private void BindAdapter()//binding to the recycler view
     {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -117,7 +98,7 @@ public class ResultsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {//inflating view
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_results, container, false);
     }

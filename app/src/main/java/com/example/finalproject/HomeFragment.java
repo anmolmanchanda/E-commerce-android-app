@@ -67,7 +67,7 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {//linking UI
         super.onViewCreated(view, savedInstanceState);
 
         ivBooks = (ImageView) getView().findViewById(R.id.ivBooks);
@@ -92,7 +92,7 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-
+//for switching Between fragments
     public void switchFragment(Fragment fragment){
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction

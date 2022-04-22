@@ -1,17 +1,17 @@
 package com.example.finalproject;
 
-public class Product {
+public class Product {//product model class
     private int productID;
     private String product_name;
     private String description;
     private float price;
-    private String url;
+    private int url;
 
     public Product() {
     }
 
     //student class constructor to set values
-    public Product(int ProductID, String PName, String PDescription, float PPrice,String url) {
+    public Product(int ProductID, String PName, String PDescription, float PPrice,int url) {
         this.productID = ProductID;
         this.product_name = PName;
         this.description = PDescription;
@@ -44,10 +44,10 @@ public class Product {
     public void setPrice(float price) {
         this.price = price;
     }
-    public String getUrl() {
+    public int getUrl() {
         return this.url;
     }
-    public void setUrl(String url) {
+    public void setUrl(int url) {
         this.url = url;
     }
 }

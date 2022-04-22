@@ -1,5 +1,5 @@
 package com.example.finalproject;
-
+//Cart class for model in using the database.
 public class Cart {
 
     private int productID;
@@ -7,12 +7,12 @@ public class Cart {
     private String description;
     private float price;
     private int quantity;
-    private String url;
+    private int url;
     public Cart() {
 
     }
 
-    public Cart(int ProductID, String PName, String PDescription, float PPrice, int Quantity,String url) {//cart class constructor to set values
+    public Cart(int ProductID, String PName, String PDescription, float PPrice, int Quantity,int url) {//cart class constructor to set values
         this.productID = ProductID;
         this.product_name = PName;
         this.description = PDescription;
@@ -42,7 +42,7 @@ public class Cart {
         return this.quantity;
     }
 
-    public String getUrl() {
+    public int getUrl() {
         return this.url;
     }
 

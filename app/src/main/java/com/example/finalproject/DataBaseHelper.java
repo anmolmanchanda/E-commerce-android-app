@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
-    //creating static variables for creating databse and table
+    //creating static variables for creating database and table
     public static  final String dbName="Ecommerce.db";
     public static final int version=1;
     public static final String CART_TABLE_NAME="Cart";
@@ -106,7 +106,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 
 
-    public float sumCart() {
+    public float sumCart() {//retriving sum total price from cart
         SQLiteDatabase db = this.getWritableDatabase();
         int quantity;
         float price, total = 0;
@@ -127,14 +127,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return total;
 
     }
-    public void deleteCartItem(Cart item) {
+    public void deleteCartItem(Cart item) { //deleting cart item
         SQLiteDatabase db = getWritableDatabase();
         int id=(item.getProductIDId());
         String whereClause = "id= ";
-       db.delete(CART_TABLE_NAME,whereClause,new String[]{String.valueOf(id)});
+       db.delete(CART_TABLE_NAME,"id=?",new String[]{String.valueOf(id)});
+
     }
 
-    public boolean updateCartData(Cart C1) {
+    public boolean updateCartData(Cart C1) {//updating cart item
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentvalues=new ContentValues();
         contentvalues.put(C_COL2,C1.getProduct_name());
@@ -145,12 +146,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.update(CART_TABLE_NAME, contentvalues, C_COL1 + " =? ", new String[]{String.valueOf(C1.getProductIDId())});
         return true;
 
+
     }
 
 
 // PRODUCT OPERATIONS
 
-    public boolean InsertIntoProduct(Product C1){
+    public boolean InsertIntoProduct(Product C1){//inserting into product
         //setting values to insert into table
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentvalues=new ContentValues();
@@ -171,7 +173,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
 
     }
-    public Cursor viewProduct(String type){
+    public Cursor viewProduct(String type){//viewing product depending on type
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor cursor;
         //executing query to select all rows and setting the cursor to  the returned rows
@@ -182,7 +184,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
-    public Cursor viewProduct( ){
+    public Cursor viewProduct( ){//view all product
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor cursor;
         //executing query to select all rows and setting the cursor to  the returned rows

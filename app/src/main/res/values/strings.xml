@@ -35,6 +35,9 @@
     <string name="fashion">Fashion</string>
     <string name="home">Home</string>
     <string name="devices">Devices</string>
+    <string name="add_cart">Add Cart</string>
+    <string name="thank_you_fro_shopping_with_us">Thank You fro shopping with us.</string>
+    <string name="order_id_201928">Order ID:201928</string>
 
 
 </resources>

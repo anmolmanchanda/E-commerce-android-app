@@ -8,11 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AccountFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+//Just a fragment to implement account information.
+//We have just added a static fragment for the sake of UI
 public class AccountFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
